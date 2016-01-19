@@ -6,6 +6,8 @@ var Informer = function(parentElement, infoArr) {
 
   $('<div class="messager" id="messager"></div>').appendTo('#' + parentElement); 
 
+  $('<div class="hi_score" id="hiScore">Рекордный счёт: <span class="hi_score_value" id="hiScoreValue"></div>').appendTo('body'); 
+
   this.refreshMessage('Игра началась', 'orange');
   this.refreshInfo(infoArr);
   this.messageCount = 0;
@@ -13,23 +15,23 @@ var Informer = function(parentElement, infoArr) {
 
 Informer.prototype = {
 
-  refreshMessage: function(message, textColor) {  console.log(message);
+  refreshHiScore: function(hiScore) {
+    $('#hiScoreValue').text(hiScore);
+  },
+
+  refreshMessage: function(message, textColor) {
     $('<div class="message_unit" id="messageUnit_' + this.messageCount + '" >' + message + '</div>').css({
       color: textColor
     }).appendTo('#messager');
 
     setTimeout(function() { 
-      $('#messageUnit_' + this.messageCount).hide(3000, function() { 
-        $('#messager').empty();
-        $('.message_unit').remove();
-      }); 
-
+      $('#messager div:first-child').remove();
     }, 3000);
 
     this.messageCount++;    
   },
 
-  refreshInfo: function(infoArr) {  console.log(infoArr);
+  refreshInfo: function(infoArr) {
     $('#scoreValue').text(infoArr['score']);
     $('#levelValue').text(infoArr['level']);
   }  

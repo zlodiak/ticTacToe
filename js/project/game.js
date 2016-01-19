@@ -83,7 +83,7 @@ Game.prototype = {
   },
 
   stepsLoop: function() {   
-    $('.cell').on('click', function() {
+    $('.cell').one('click', function() {
       var w = $(this).attr('data-w'), 
           h = $(this).attr('data-h')
 
@@ -132,6 +132,7 @@ Game.prototype = {
   },
 
   levelsLoop: function() {
+    self.informer.refreshHiScore(self.hiScore);
     self.stepsCount = 0;
     self.fillFieldArr();
     self.helper.levelScreenDisplay(self.level, 'body');
@@ -152,6 +153,7 @@ Game.prototype = {
       message = 'Вы выиграли!';
     }
     else if(label == self.compLabel) {
+      self.hiScore = self.score;
       self.score = 0;
       self.level = 1;
       message = 'Вы проиграли...';
