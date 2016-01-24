@@ -1,4 +1,5 @@
 # ugadaika
-education project. game on design patterns
+education project. game tic tac toe
+failed version
 
-live example: 
+live example: http://prozaik.16mb.com/works/weekend_projects/ticTacToe/
