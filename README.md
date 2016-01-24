@@ -1,4 +1,4 @@
-# ugadaika
+# tic tac toe
 education project. game tic tac toe
 failed version
 
